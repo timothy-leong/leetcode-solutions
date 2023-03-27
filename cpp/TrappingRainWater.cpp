@@ -1,4 +1,5 @@
 #include <algorithm>
+#include <functional>
 #include <vector>
 using namespace std;
 
@@ -10,35 +11,31 @@ public:
     /// @return The total amount of water trapped.
     int trap(vector<int> &height)
     {
-        int left{};
-        int right{static_cast<int>(height.size()) - 1};
-        int leftTallest{};
-        int rightTallest{};
-        int water{};
-
-        while (left < right)
+        function<int(const int, const int, const int, const int, const int)> go;
+        go = [&](
+                 const int left,
+                 const int right,
+                 const int prevLeftTallest,
+                 const int prevRightTallest,
+                 const int water)
+            -> int
         {
-            leftTallest = max(leftTallest, height[left]);
-            rightTallest = max(rightTallest, height[right]);
-
-            if (leftTallest <= rightTallest)
+            if (left >= right)
             {
-                if (leftTallest > height[left])
-                {
-                    water += leftTallest - height[left];
-                }
-                ++left;
+                return water;
             }
-            else
-            {
-                if (rightTallest > height[right])
-                {
-                    water += rightTallest - height[right];
-                }
-                --right;
-            }
-        }
 
-        return water;
+            const int currLeftTallest = max(prevLeftTallest, height[left]);
+            const int currRightTallest = max(prevRightTallest, height[right]);
+
+            if (currLeftTallest <= currRightTallest)
+            {
+                return go(left + 1, right, currLeftTallest, currRightTallest, water + max(currLeftTallest - height[left], 0));
+            }
+
+            return go(left, right - 1, currLeftTallest, currRightTallest, water + max(currRightTallest - height[right], 0));
+        };
+
+        return go(0, height.size() - 1, 0, 0, 0);
     }
 };
