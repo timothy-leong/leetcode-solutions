@@ -2,15 +2,16 @@
 #include <vector>
 using namespace std;
 
-/**
- * Use a hashmap to remember numbers seen before.
- * Once we find a previous number that sums to target with
- * the current number, we return the index of that number and
- * the index of the current number.
- */
 class Solution
 {
 public:
+    /// @brief Use a hashmap to remember numbers seen before.
+    /// Once we find a previous number that sums to target with
+    /// the current number, we return the index of that number and
+    /// the index of the current number.
+    /// @param nums The array of numbers
+    /// @param target The target sum
+    /// @return the indices of the pair that sum to target
     vector<int> twoSum(vector<int> &nums, int target)
     {
         // Map previously seen numbers to their indices.
