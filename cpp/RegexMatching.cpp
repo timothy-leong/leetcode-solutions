@@ -43,14 +43,17 @@ public:
 
                 if (char_match && !wildcard)
                 {
+                    // Case 4
                     dp[i][j] = dp[i + 1][j + 1];
                 }
                 else if (!char_match && wildcard)
                 {
+                    // Case 5
                     dp[i][j] = dp[i][j + 2];
                 }
                 else if (char_match && wildcard)
                 {
+                    // Case 6
                     dp[i][j] = dp[i][j + 2] || dp[i + 1][j] || dp[i + 1][j + 2];
                 }
             }
