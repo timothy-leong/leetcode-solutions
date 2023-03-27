@@ -6,3 +6,4 @@
 | 4  | [Median Of Two Sorted Arrays](https://leetcode.com/problems/median-of-two-sorted-arrays/)                                       |               [MedianOfTwoSortedArrays.cpp](cpp/MedianOfTwoSortedArrays.cpp)               |
 | 10 | [Regular Expression Matching](https://leetcode.com/problems/regular-expression-matching/)                                       |                         [RegexMatching.cpp](cpp/RegexMatching.cpp)                         |
 | 15 | [3 Sum](https://leetcode.com/problems/3sum/)                                                                                    |                              [ThreeSum.cpp](cpp/ThreeSum.cpp)                              |
+| 42 | [Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/)                                                       |                     [TrappingRainWater.cpp](cpp/TrappingRainWater.cpp)                     |
