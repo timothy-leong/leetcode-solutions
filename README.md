@@ -10,4 +10,5 @@
 | 42  | [Trapping Rain Water](https://leetcode.com/problems/trapping-rain-water/)                                                       |                     [TrappingRainWater.cpp](cpp/TrappingRainWater.cpp)                     |
 | 43  | [Multiplying Strings](https://leetcode.com/problems/multiply-strings/)                                                          |                    [MultiplyingStrings.cpp](cpp/MultiplyingStrings.cpp)                    |
 | 51  | [N-Queens](https://leetcode.com/problems/n-queens/)                                                                             |                               [NQueens.cpp](cpp/NQueens.cpp)                               |
+| 52  | [N-Queens II](https://leetcode.com/problems/n-queens-ii/)                                                                       |                              [NQueens2.cpp](cpp/NQueens2.cpp)                              |
 | 983 | [Minimum Cost For Tickets](https://leetcode.com/problems/minimum-cost-for-tickets/)                                             |                 [MinimumCostForTickets.cpp](cpp/MinimumCostForTickets.cpp)                 |
