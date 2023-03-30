@@ -1,3 +1,4 @@
+#include <functional>
 #include <string>
 #include <unordered_map>
 using namespace std;
@@ -6,30 +7,36 @@ class Solution {
  public:
   bool isScramble(string s1, string s2) {
     unordered_map<int, bool> memo;
-    return dp(s1, s2, 0, 0, s1.length(), memo);
-  }
+    function<bool(const int, const int, const int)> dp;
+    function<bool(const int, const int, const int, const int)> trySlice;
 
-  bool dp(string& s1, string& s2, const int s1_begin, const int s2_begin,
-          const int length, unordered_map<int, bool>& memo) {
-    if (length == 1) {
-      return s1[s1_begin] == s2[s2_begin];
-    }
+    trySlice = [&](const int s1_begin, const int s2_begin, const int length,
+                   const int leftSliceSize) -> bool {
+      if (leftSliceSize == length) {
+        return false;
+      }
 
-    const int key = (s1_begin << 10) | (s2_begin << 5) | length;
-    if (auto iter{memo.find(key)}; iter != memo.end()) {
-      return iter->second;
-    }
+      return (dp(s1_begin, s2_begin, leftSliceSize) &&
+              dp(s1_begin + leftSliceSize, s2_begin + leftSliceSize,
+                 length - leftSliceSize)) ||
+             (dp(s1_begin, s2_begin + length - leftSliceSize, leftSliceSize) &&
+              dp(s1_begin + leftSliceSize, s2_begin, length - leftSliceSize)) ||
+             trySlice(s1_begin, s2_begin, length, leftSliceSize + 1);
+    };
 
-    bool result{};
-    for (int left_cut = 1; left_cut < length && !result; ++left_cut) {
-      result =
-          (dp(s1, s2, s1_begin, s2_begin, left_cut, memo) &&
-           dp(s1, s2, s1_begin + left_cut, s2_begin + left_cut,
-              length - left_cut, memo)) ||
-          (dp(s1, s2, s1_begin, s2_begin + length - left_cut, left_cut, memo) &&
-           dp(s1, s2, s1_begin + left_cut, s2_begin, length - left_cut, memo));
-    }
+    dp = [&](const int s1_begin, const int s2_begin, const int length) -> bool {
+      if (length == 1) {
+        return s1[s1_begin] == s2[s2_begin];
+      }
 
-    return memo[key] = result;
+      const int key = (s1_begin << 10) | (s2_begin << 5) | length;
+      if (auto iter{memo.find(key)}; iter != memo.end()) {
+        return iter->second;
+      }
+
+      return memo[key] = trySlice(s1_begin, s2_begin, length, 1);
+    };
+
+    return dp(0, 0, static_cast<int>(s1.length()));
   }
 };
