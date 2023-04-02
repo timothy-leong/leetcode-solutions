@@ -16,3 +16,4 @@
 | 87   | [Scramble String](https://leetcode.com/problems/scramble-string/)                                                               |                        [ScrambleString.cpp](cpp/ScrambleString.cpp)                        |
 | 983  | [Minimum Cost For Tickets](https://leetcode.com/problems/minimum-cost-for-tickets/)                                             |                 [MinimumCostForTickets.cpp](cpp/MinimumCostForTickets.cpp)                 |
 | 1402 | [Reducing Dishes](https://leetcode.com/problems/reducing-dishes/)                                                               |                        [ReducingDishes.cpp](cpp/ReducingDishes.cpp)                        |
+| 2300 | [ Successful Pairs of Spells and Potions](https://leetcode.com/problems/successful-pairs-of-spells-and-potions/)                |     [SuccessfulPairsOfSpellsAndPotions.cpp](cpp/SuccessfulPairsOfSpellsAndPotions.cpp)     |
