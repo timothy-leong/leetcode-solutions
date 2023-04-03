@@ -7,6 +7,7 @@ class Solution {
  public:
   int numRescueBoats(vector<int>& people, int limit) {
     sort(people.begin(), people.end());
+
     function<int(const int, const int, const int)> go;
     go = [&](const int i, const int j, const int result) {
       if (i > j) return result;
