@@ -4,20 +4,16 @@ using namespace std;
 class Solution {
  public:
   string removeStars(string s) {
-    string result;
-    result.reserve(s.length());
     int asterisks{};
-    for (auto iter = s.rbegin(); iter != s.rend(); ++iter) {
-      if (*iter == '*') {
-        ++asterisks;
-      } else if (asterisks > 0) {
-        --asterisks;
+    int cursor{};
+    for (int i{}; i < s.length(); ++i) {
+      if (s[i] != '*') {
+        s[cursor++] = s[i];
       } else {
-        result.push_back(*iter);
+        --cursor;
       }
     }
-
-    reverse(result.begin(), result.end());
-    return result;
+    s.resize(cursor);
+    return s;
   }
 };
