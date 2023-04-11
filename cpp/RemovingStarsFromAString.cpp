@@ -4,7 +4,6 @@ using namespace std;
 class Solution {
  public:
   string removeStars(string s) {
-    int asterisks{};
     int cursor{};
     for (int i{}; i < s.length(); ++i) {
       if (s[i] != '*') {
